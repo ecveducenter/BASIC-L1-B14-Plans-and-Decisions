@@ -482,6 +482,45 @@
         background: #f1f5f3;
       }
 
+      .overall-progress {
+        margin-top: 56px;
+        padding: 30px 36px;
+        border: 1px solid var(--line);
+        border-radius: 18px;
+        background: var(--white);
+      }
+
+      .overall-progress-label {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 16px;
+        margin: 0 0 16px;
+        color: var(--muted);
+        font-size: 18px;
+        font-weight: 800;
+      }
+
+      .overall-progress-label strong {
+        color: var(--ink);
+        white-space: nowrap;
+      }
+
+      .overall-progress .progress-track {
+        margin: 0;
+      }
+
+      @media (max-width: 640px) {
+        .overall-progress {
+          margin-top: 28px;
+          padding: 22px 18px;
+        }
+
+        .overall-progress-label {
+          font-size: 16px;
+        }
+      }
+
       @media (max-width: 640px) {
         .topbar {
           min-height: 102px;
@@ -667,9 +706,9 @@
         <h1 id="page-title">Plans &amp; Decisions</h1>
         <p class="intro">Những mẫu câu về kế hoạch và quyết định trong giao tiếp hằng ngày.</p>
         <div class="hero-meta">
-          <span>15 mẫu câu</span>
+          <span>30 câu</span>
           <span class="dot" aria-hidden="true">•</span>
-          <span>Phần I</span>
+          <span>Phần I &amp; II</span>
           <span class="dot" aria-hidden="true">•</span>
           <span>English · Vietnamese</span>
         </div>
@@ -718,6 +757,23 @@
         </div>
         <div class="drill-list" id="drill-list"></div>
         <button class="reset-drills" id="reset-drills" type="button">Làm lại Phần II</button>
+      </section>
+
+      <section class="overall-progress" aria-label="Tiến độ toàn bài">
+        <p class="overall-progress-label" aria-live="polite">
+          <span>Tiến độ toàn bài</span>
+          <strong><span id="overall-progress-count">0</span> / 30 câu</strong>
+        </p>
+        <div
+          class="progress-track"
+          role="progressbar"
+          aria-label="Tiến độ toàn bài"
+          aria-valuemin="0"
+          aria-valuemax="30"
+          aria-valuenow="0"
+        >
+          <div class="progress-fill" id="overall-progress-fill"></div>
+        </div>
       </section>
 
       <footer>BASIC ENGLISH · LESSON 14</footer>
@@ -826,6 +882,16 @@
       const fill = document.querySelector("#progress-fill");
       const progressBar = document.querySelector(".progress-track");
       const answered = new Set();
+      const overallCount = document.querySelector("#overall-progress-count");
+      const overallFill = document.querySelector("#overall-progress-fill");
+      const overallProgressBar = document.querySelector(".overall-progress .progress-track");
+
+      function updateOverallProgress() {
+        const progress = answered.size + completedDrills.size;
+        overallCount.textContent = progress;
+        overallFill.style.width = `${(progress / (sentences.length + drills.length)) * 100}%`;
+        overallProgressBar.setAttribute("aria-valuenow", progress);
+      }
 
       sentences.forEach(([english, vietnamese], index) => {
         const number = String(index + 1).padStart(2, "0");
@@ -874,6 +940,7 @@
             count.textContent = progress;
             fill.style.width = `${(progress / sentences.length) * 100}%`;
             progressBar.setAttribute("aria-valuenow", progress);
+            updateOverallProgress();
           });
 
           label.append(input, letter, answerText);
@@ -911,6 +978,7 @@
         drillCount.textContent = progress;
         drillFill.style.width = `${(progress / drills.length) * 100}%`;
         drillProgressBar.setAttribute("aria-valuenow", progress);
+        updateOverallProgress();
       }
 
       function placeWord(state, wordIndex) {
