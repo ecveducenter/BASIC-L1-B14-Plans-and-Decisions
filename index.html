@@ -1,0 +1,1089 @@
+<!doctype html>
+<html lang="vi">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#1c414f">
+    <title>Lesson 14: Plans &amp; Decisions | Basic English</title>
+    <style>
+      :root {
+        color-scheme: light;
+        --ink: #1c414f;
+        --coral: #ed7277;
+        --paper: #e8f4f1;
+        --muted: #738187;
+        --line: #e1e6e4;
+        --white: #fff;
+        font-family: Inter, "Segoe UI", Arial, sans-serif;
+        font-synthesis: none;
+        text-rendering: optimizeLegibility;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        background: var(--paper);
+        color: var(--ink);
+      }
+
+      .topbar {
+        min-height: 150px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 24px;
+        padding: 24px max(5vw, 28px);
+        border-bottom: 9px solid var(--coral);
+        background: var(--ink);
+        color: var(--white);
+      }
+
+      .brand {
+        display: flex;
+        align-items: center;
+        gap: 24px;
+        font-size: 20px;
+        font-weight: 900;
+        letter-spacing: 0.28em;
+      }
+
+      .brand-mark {
+        width: 104px;
+        height: 104px;
+        display: grid;
+        place-items: center;
+        border-radius: 50%;
+        background: var(--coral);
+        color: var(--ink);
+        font-family: Georgia, serif;
+        font-size: 76px;
+        font-weight: 700;
+        letter-spacing: 0;
+      }
+
+      .lesson-label {
+        font-size: 16px;
+        font-weight: 900;
+        letter-spacing: 0.17em;
+        text-align: right;
+        text-transform: uppercase;
+      }
+
+      .lesson-label span {
+        padding: 0 16px;
+        color: var(--coral);
+      }
+
+      main {
+        width: min(1200px, calc(100% - 48px));
+        margin: 70px auto 88px;
+      }
+
+      .hero {
+        position: relative;
+        overflow: hidden;
+        padding: clamp(48px, 8vw, 92px);
+        border-radius: 56px 56px 18px 18px;
+        background:
+          radial-gradient(ellipse at 74% -12%, transparent 0 29%, rgb(255 255 255 / 6%) 29.1% 29.3%, transparent 29.4%),
+          radial-gradient(ellipse at 74% -12%, transparent 0 42%, rgb(255 255 255 / 6%) 42.1% 42.3%, transparent 42.4%),
+          var(--ink);
+        color: var(--white);
+      }
+
+      .eyebrow,
+      .section-kicker {
+        margin: 0;
+        color: #c3e2d8;
+        font-size: 15px;
+        font-weight: 900;
+        letter-spacing: 0.25em;
+        text-transform: uppercase;
+      }
+
+      h1 {
+        margin: 22px 0 30px;
+        font-family: Georgia, "Times New Roman", serif;
+        font-size: clamp(54px, 9vw, 100px);
+        line-height: 0.98;
+        letter-spacing: -0.045em;
+      }
+
+      .intro {
+        max-width: 780px;
+        margin: 0;
+        color: #e0e9e7;
+        font-size: clamp(18px, 2.1vw, 24px);
+        line-height: 1.6;
+      }
+
+      .hero-meta {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 14px 24px;
+        margin-top: 34px;
+        font-size: 16px;
+        font-weight: 800;
+      }
+
+      .hero-meta .dot {
+        color: var(--coral);
+      }
+
+      .lesson-section {
+        margin-top: 56px;
+        padding: clamp(28px, 5vw, 58px);
+        border: 1px solid #e8ecea;
+        border-radius: 18px;
+        background: var(--white);
+      }
+
+      .section-heading {
+        display: flex;
+        align-items: end;
+        justify-content: space-between;
+        gap: 24px;
+        margin-bottom: 18px;
+      }
+
+      .section-kicker {
+        margin-bottom: 12px;
+        color: var(--coral);
+      }
+
+      h2 {
+        margin: 0;
+        font-family: Georgia, "Times New Roman", serif;
+        font-size: clamp(28px, 4vw, 40px);
+        line-height: 1.12;
+      }
+
+      .progress-label {
+        flex: 0 0 auto;
+        margin: 0 0 4px;
+        color: var(--muted);
+        font-weight: 800;
+      }
+
+      .section-instruction {
+        margin: 20px 0 16px;
+        color: var(--muted);
+        font-size: 18px;
+        line-height: 1.6;
+      }
+
+      .progress-track {
+        height: 11px;
+        overflow: hidden;
+        margin-bottom: 32px;
+        border-radius: 99px;
+        background: #e9efed;
+      }
+
+      .progress-fill {
+        width: 0;
+        height: 100%;
+        border-radius: inherit;
+        background: var(--coral);
+        transition: width 180ms ease;
+      }
+
+      .sentence-list {
+        display: grid;
+        gap: 16px;
+      }
+
+      .sentence-card {
+        overflow: hidden;
+        padding: 40px 32px;
+        border: 1px solid var(--line);
+        border-radius: 24px;
+        background: var(--white);
+      }
+
+      .sentence-card h3 {
+        display: flex;
+        align-items: center;
+        gap: 24px;
+        margin: 0 0 32px;
+        font-size: clamp(21px, 3vw, 30px);
+        line-height: 1.4;
+      }
+
+      .sentence-number {
+        width: 68px;
+        height: 68px;
+        flex: 0 0 68px;
+        display: grid;
+        align-items: center;
+        place-items: center;
+        border-radius: 50%;
+        background: var(--coral);
+        color: var(--white);
+        font-size: 20px;
+        font-weight: 900;
+      }
+
+      .answers {
+        display: grid;
+        gap: 16px;
+        margin-left: 92px;
+      }
+
+      .answer {
+        position: relative;
+        min-height: 76px;
+        display: flex;
+        align-items: center;
+        gap: 24px;
+        padding: 18px 28px;
+        border-radius: 16px;
+        background: #f5f8f6;
+        cursor: pointer;
+        font-size: clamp(20px, 3vw, 30px);
+        line-height: 1.5;
+        transition: background-color 140ms ease, box-shadow 140ms ease;
+      }
+
+      .answer:hover {
+        background: #eef4f1;
+      }
+
+      .answer:focus-within {
+        outline: 3px solid var(--ink);
+        outline-offset: 3px;
+      }
+
+      .answer.is-selected {
+        background: #e9f2ee;
+        box-shadow: inset 0 0 0 2px #b7d5ce;
+      }
+
+      .answer input {
+        position: absolute;
+        width: 1px;
+        height: 1px;
+        overflow: hidden;
+        clip: rect(0, 0, 0, 0);
+        white-space: nowrap;
+      }
+
+      .answer-letter {
+        width: 56px;
+        height: 56px;
+        flex: 0 0 56px;
+        display: grid;
+        place-items: center;
+        border-radius: 50%;
+        background: #e7efeb;
+        color: var(--ink);
+        font-size: 21px;
+        font-weight: 800;
+      }
+
+      button:focus-visible {
+        outline: 3px solid var(--ink);
+        outline-offset: 4px;
+      }
+
+      .drill-list {
+        display: grid;
+        gap: 20px;
+      }
+
+      .drill-card {
+        padding: 40px 32px;
+        border: 1px solid var(--line);
+        border-radius: 24px;
+        background: var(--white);
+      }
+
+      .drill-number {
+        width: 68px;
+        height: 68px;
+        display: grid;
+        place-items: center;
+        margin-bottom: 30px;
+        border-radius: 50%;
+        background: var(--coral);
+        color: var(--white);
+        font-size: 20px;
+        font-weight: 900;
+      }
+
+      .word-bank {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 12px;
+        min-height: 68px;
+        margin-bottom: 28px;
+      }
+
+      .word-tile,
+      .placed-word {
+        min-height: 60px;
+        padding: 14px 22px;
+        border: 0;
+        border-radius: 16px;
+        background: #eaf1ee;
+        color: var(--ink);
+        font: inherit;
+        font-size: clamp(18px, 2vw, 25px);
+        font-weight: 650;
+        cursor: pointer;
+        transition: opacity 140ms ease, background-color 140ms ease, color 140ms ease;
+      }
+
+      .word-tile:hover:not(:disabled),
+      .placed-word:hover:not(:disabled) {
+        background: #dcebe5;
+      }
+
+      .word-tile:disabled {
+        opacity: 0.48;
+        color: #78909a;
+        cursor: default;
+        text-decoration: line-through;
+        text-decoration-thickness: 2px;
+      }
+
+      .answer-zone {
+        min-height: 190px;
+        display: flex;
+        align-content: flex-start;
+        align-items: flex-start;
+        flex-wrap: wrap;
+        gap: 12px;
+        padding: 28px;
+        border: 2px dashed #acd3df;
+        border-radius: 20px;
+        background: #fff;
+        transition: background-color 140ms ease, border-color 140ms ease;
+      }
+
+      .answer-zone:empty::before {
+        align-self: flex-start;
+        color: #99a4a8;
+        content: "Nhấp vào từ phía trên hoặc kéo từ vào đây";
+        font-size: 18px;
+        line-height: 1.5;
+        pointer-events: none;
+      }
+
+      .answer-zone.is-drop-target {
+        border-color: #72b9cb;
+        background: #f2fafb;
+      }
+
+      .placed-word {
+        min-height: 56px;
+        background: #edf6f2;
+        box-shadow: inset 0 0 0 1px #d5eae1;
+      }
+
+      .drill-translation {
+        margin: 42px 16px 28px;
+        font-size: clamp(21px, 2.5vw, 30px);
+        font-weight: 700;
+        line-height: 1.5;
+      }
+
+      .substitutions {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: baseline;
+        gap: 12px 24px;
+        margin: 0 16px;
+        color: var(--muted);
+        font-size: 17px;
+        line-height: 1.6;
+      }
+
+      .substitutions-title {
+        color: var(--ink);
+        font-size: 19px;
+        font-weight: 900;
+      }
+
+      .substitution {
+        display: inline-flex;
+        flex-wrap: wrap;
+        gap: 7px;
+      }
+
+      .substitution strong {
+        color: var(--ink);
+      }
+
+      .drill-note {
+        margin: 16px 16px 0;
+        color: var(--muted);
+        font-size: 15px;
+        font-style: italic;
+        line-height: 1.6;
+      }
+
+      .drill-actions {
+        display: flex;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: 16px;
+        margin: 26px 16px 0;
+      }
+
+      .check-drill,
+      .reset-drills {
+        min-height: 56px;
+        padding: 12px 24px;
+        border: 1px solid var(--ink);
+        border-radius: 10px;
+        background: var(--ink);
+        color: var(--white);
+        font: inherit;
+        font-size: 17px;
+        font-weight: 800;
+        cursor: pointer;
+        transition: background-color 140ms ease, opacity 140ms ease;
+      }
+
+      .check-drill:hover:not(:disabled) {
+        background: #2b5968;
+      }
+
+      .check-drill:disabled {
+        border-color: #d8dfdd;
+        background: #d8dfdd;
+        color: #849095;
+        cursor: not-allowed;
+      }
+
+      .drill-feedback {
+        margin: 0;
+        color: #a54b50;
+        font-weight: 800;
+      }
+
+      .drill-card.is-correct .drill-feedback {
+        color: #267450;
+      }
+
+      .reset-drills {
+        display: block;
+        margin: 28px 0 0 auto;
+        border-color: var(--ink);
+        background: var(--white);
+        color: var(--ink);
+      }
+
+      .reset-drills:hover {
+        background: #f1f5f3;
+      }
+
+      @media (max-width: 640px) {
+        .topbar {
+          min-height: 102px;
+          padding: 16px 20px;
+        }
+
+        .brand {
+          gap: 12px;
+          font-size: 13px;
+          letter-spacing: 0.18em;
+        }
+
+        .brand-mark {
+          width: 64px;
+          height: 64px;
+          font-size: 48px;
+        }
+
+        .lesson-label {
+          max-width: 120px;
+          font-size: 11px;
+          line-height: 1.7;
+        }
+
+        .lesson-label span {
+          padding: 0 4px;
+        }
+
+        main {
+          width: min(100% - 28px, 1200px);
+          margin: 32px auto 56px;
+        }
+
+        .hero {
+          padding: 42px 28px;
+          border-radius: 34px 34px 14px 14px;
+        }
+
+        .eyebrow,
+        .section-kicker {
+          font-size: 12px;
+        }
+
+        .hero-meta {
+          gap: 10px;
+          font-size: 14px;
+        }
+
+        .lesson-section {
+          margin-top: 28px;
+          padding: 24px 16px;
+        }
+
+        .section-heading {
+          align-items: start;
+          flex-direction: column;
+          gap: 12px;
+        }
+
+        .section-instruction {
+          font-size: 16px;
+        }
+
+        .sentence-card {
+          padding: 20px 16px;
+          border-radius: 18px;
+        }
+
+        .sentence-card h3 {
+          gap: 14px;
+          margin-bottom: 22px;
+        }
+
+        .sentence-number {
+          width: 52px;
+          height: 52px;
+          flex-basis: 52px;
+          font-size: 15px;
+        }
+
+        .answers {
+          gap: 12px;
+          margin-left: 0;
+        }
+
+        .answer {
+          min-height: 64px;
+          gap: 16px;
+          padding: 14px 16px;
+          border-radius: 14px;
+        }
+
+        .answer-letter {
+          width: 46px;
+          height: 46px;
+          flex-basis: 46px;
+          font-size: 18px;
+        }
+
+        .drill-card {
+          padding: 24px 16px;
+          border-radius: 18px;
+        }
+
+        .drill-number {
+          width: 52px;
+          height: 52px;
+          margin-bottom: 22px;
+          font-size: 15px;
+        }
+
+        .word-bank {
+          gap: 9px;
+          min-height: 56px;
+          margin-bottom: 20px;
+        }
+
+        .word-tile,
+        .placed-word {
+          min-height: 48px;
+          padding: 11px 15px;
+          border-radius: 12px;
+          font-size: 17px;
+        }
+
+        .answer-zone {
+          min-height: 150px;
+          gap: 9px;
+          padding: 16px;
+          border-radius: 16px;
+        }
+
+        .drill-translation {
+          margin: 28px 4px 20px;
+        }
+
+        .substitutions {
+          gap: 10px 16px;
+          margin: 0 4px;
+          font-size: 15px;
+        }
+
+        .substitutions-title {
+          font-size: 17px;
+        }
+
+        .drill-note,
+        .drill-actions {
+          margin-left: 4px;
+          margin-right: 4px;
+        }
+
+        .drill-actions {
+          align-items: flex-start;
+          flex-direction: column;
+        }
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        *,
+        *::before,
+        *::after {
+          scroll-behavior: auto !important;
+          animation-duration: 0.01ms !important;
+          animation-iteration-count: 1 !important;
+          transition-duration: 0.01ms !important;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header class="topbar">
+      <div class="brand" aria-label="Basic English">
+        <div class="brand-mark" aria-hidden="true">B</div>
+        <span>BASIC ENGLISH</span>
+      </div>
+      <div class="lesson-label">Lesson 14 <span>/</span> Plans &amp; Decisions</div>
+    </header>
+
+    <main>
+      <section class="hero" aria-labelledby="page-title">
+        <p class="eyebrow">Everyday conversation</p>
+        <h1 id="page-title">Plans &amp; Decisions</h1>
+        <p class="intro">Những mẫu câu về kế hoạch và quyết định trong giao tiếp hằng ngày.</p>
+        <div class="hero-meta">
+          <span>15 mẫu câu</span>
+          <span class="dot" aria-hidden="true">•</span>
+          <span>Phần I</span>
+          <span class="dot" aria-hidden="true">•</span>
+          <span>English · Vietnamese</span>
+        </div>
+      </section>
+
+      <section class="lesson-section" aria-labelledby="sentences-title">
+        <div class="section-heading">
+          <div>
+            <p class="section-kicker">Phần I</p>
+            <h2 id="sentences-title">Basic sentences | Mẫu câu cơ bản</h2>
+          </div>
+          <p class="progress-label" aria-live="polite">Đã chọn <span id="progress-count">0</span> / 15 câu</p>
+        </div>
+        <p class="section-instruction">Chọn nghĩa tiếng Việt phù hợp nhất cho mỗi câu.</p>
+        <div
+          class="progress-track"
+          role="progressbar"
+          aria-label="Số câu đã xem"
+          aria-valuemin="0"
+          aria-valuemax="15"
+          aria-valuenow="0"
+        >
+          <div class="progress-fill" id="progress-fill"></div>
+        </div>
+        <div class="sentence-list" id="sentence-list"></div>
+      </section>
+
+      <section class="lesson-section" aria-labelledby="drills-title">
+        <div class="section-heading">
+          <div>
+            <p class="section-kicker">Phần II</p>
+            <h2 id="drills-title">Substitution Drills | Bài tập thay thế</h2>
+          </div>
+          <p class="progress-label" aria-live="polite">Đã xếp <span id="drill-progress-count">0</span> / 15 câu</p>
+        </div>
+        <p class="section-instruction">Nhấp vào từ hoặc kéo từ vào khung để xếp thành câu hoàn chỉnh. Từ đã chọn sẽ mờ đi và gạch ngang; nhấp vào từ trong khung để đưa từ trở lại.</p>
+        <div
+          class="progress-track"
+          role="progressbar"
+          aria-label="Tiến độ bài tập thay thế"
+          aria-valuemin="0"
+          aria-valuemax="15"
+          aria-valuenow="0"
+        >
+          <div class="progress-fill" id="drill-progress-fill"></div>
+        </div>
+        <div class="drill-list" id="drill-list"></div>
+        <button class="reset-drills" id="reset-drills" type="button">Làm lại Phần II</button>
+      </section>
+
+      <footer>BASIC ENGLISH · LESSON 14</footer>
+    </main>
+
+    <script>
+      const sentences = [
+        ["I’ll keep thinking about it", "Con sẽ tiếp tục suy nghĩ về điều này"],
+        ["We may just have to share my car for a while", "Có lẽ chúng mình đành phải dùng chung xe của anh trong một thời gian"],
+        ["We need to start a college fund for Tyler", "Chúng mình cần bắt đầu quỹ học đại học cho Tyler"],
+        ["Do you know what you’re doing after graduation?", "Bạn có biết bạn sẽ làm gì sau khi tốt nghiệp không?"],
+        ["I haven’t made up my mind yet", "Anh vẫn chưa quyết định"],
+        ["I’ll let you know what I decide", "Tôi sẽ báo cho anh biết điều tôi quyết định"],
+        ["I have to make a difficult choice", "Tôi sẽ phải có một lựa chọn khó khăn"],
+        ["Decide quickly", "Hãy quyết định nhanh lên"],
+        ["I hadn’t anticipated that", "Tôi đã không tiên đoán được điều đó"],
+        ["What do you plan to do about this mess?", "Anh định làm gì với mớ hỗn độn này đây?"],
+        ["The disaster was a result of poor planning", "Tai họa này là kết quả của việc quy hoạch kém cỏi"],
+        ["I plan to take the next train out of here", "Tôi định đi chuyến xe lửa kế tiếp rời khỏi đây"],
+        ["I intend to buy a new house", "Tôi dự định mua một căn nhà mới"],
+        ["I had only the best intentions", "Tôi chỉ có những dự định tốt nhất"],
+        ["Everything is going according to plan", "Mọi thứ đều diễn ra theo kế hoạch"]
+      ];
+
+      const drills = [
+        {
+          sentence: "I thought you were thinking about going to Florida State University.",
+          translation: "Ba vẫn nghĩ là con định học Đại học bang Florida kia mà.",
+          substitutions: [["planning to go", "định học"], ["wanting to go", "muốn học"], ["intending to go", "dự định học"]]
+        },
+        {
+          sentence: "Just make sure you decide on something you enjoy.",
+          translation: "Hãy nhớ chọn điều gì con thật yêu thích.",
+          substitutions: [["choose", "chọn"], ["pick", "chọn"], ["select", "chọn"]]
+        },
+        {
+          sentence: "I think I just like the feel of Ohio better.",
+          translation: "Con nghĩ là con thích cái cảm giác của trường Ohio hơn.",
+          substitutions: [["impression", "ấn tượng"], ["idea", "tư tưởng"], ["atmosphere", "bầu không khí"]]
+        },
+        {
+          sentence: "That stupid car broke down again.",
+          translation: "Chiếc xe cà tàng đó lại bị hỏng.",
+          substitutions: [["fell apart", "rời ra từng phần"], ["stopped working", "ngừng chạy"], ["died", "chết máy"]]
+        },
+        {
+          sentence: "We just had it serviced last month.",
+          translation: "Chúng mình vừa cho bảo trì nó tháng rồi mà.",
+          substitutions: [["repaired", "sửa"], ["fixed", "sửa"], ["maintained", "bảo trì"]]
+        },
+        {
+          sentence: "Yes, but that’s awfully inconvenient.",
+          translation: "Đúng, nhưng thế thì cực kỳ bất tiện.",
+          substitutions: [["difficult", "khó khăn"], ["impractical", "không thiết thực"], ["awkward", "bất tiện"]]
+        },
+        {
+          sentence: "We need to start a college fund for Tyler.",
+          translation: "Chúng mình cần bắt đầu quỹ học đại học cho Tyler.",
+          substitutions: [["savings", "tiền tiết kiệm"], ["account", "tài khoản"], ["plan", "kế hoạch"]],
+          note: "Lưu ý: Không dùng “a” trước từ “savings”."
+        },
+        {
+          sentence: "But he’s not yet four years old.",
+          translation: "Nhưng bây giờ con chưa đầy bốn tuổi mà.",
+          substitutions: [["not even", "chưa tới"], ["not quite", "chưa tới"], ["almost", "mới gần"]]
+        },
+        {
+          sentence: "I just read an article about how expensive college is already.",
+          translation: "Anh vừa đọc một bài báo thấy giáo dục đại học bây giờ đã đắt thế nào rồi.",
+          substitutions: [["a report", "một bài báo cáo"], ["a book", "một cuốn sách"], ["a piece", "một tin"]]
+        },
+        {
+          sentence: "Hey, Sean, do you know what you’re doing after graduation?",
+          translation: "Này Sean, bạn có biết bạn sẽ làm gì sau khi tốt nghiệp không?",
+          substitutions: [["finishing school?", "học xong"], ["college?", "học xong đại học"], ["school is over?", "học xong"]]
+        },
+        {
+          sentence: "Actually, I’ve been considering a job in China.",
+          translation: "Thật ra là tôi đang cân nhắc một công việc ở Trung Quốc.",
+          substitutions: [["looking into", "xem xét"], ["thinking about", "nghĩ về"], ["planning on", "dự tính"]]
+        },
+        {
+          sentence: "I don’t know anything about the place.",
+          translation: "Tôi không biết gì về nơi đó.",
+          substitutions: [["nation", "quốc gia"], ["country", "đất nước"], ["area", "vùng"]]
+        },
+        {
+          sentence: "I’m thinking about quitting my job.",
+          translation: "Anh đang nghĩ tới chuyện bỏ việc.",
+          substitutions: [["leaving", "bỏ"], ["terminating", "chấm dứt"], ["ending", "kết thúc"]]
+        },
+        {
+          sentence: "Well, this is a sudden decision.",
+          translation: "Này, đây là một quyết định đột ngột đấy.",
+          substitutions: [["plan", "kế hoạch"], ["choice", "lựa chọn"], ["move", "sự thay đổi"]]
+        },
+        {
+          sentence: "Well, you probably should think about it before you do anything too drastic.",
+          translation: "Thôi, có lẽ là anh nên suy nghĩ về điều đó trước khi làm bất cứ việc gì quá liều lĩnh.",
+          substitutions: [["sudden", "đột ngột"], ["rash", "liều"], ["hasty", "vội vàng"]]
+        }
+      ];
+
+      const list = document.querySelector("#sentence-list");
+      const count = document.querySelector("#progress-count");
+      const fill = document.querySelector("#progress-fill");
+      const progressBar = document.querySelector(".progress-track");
+      const answered = new Set();
+
+      sentences.forEach(([english, vietnamese], index) => {
+        const number = String(index + 1).padStart(2, "0");
+        const card = document.createElement("article");
+        card.className = "sentence-card";
+
+        const heading = document.createElement("h3");
+        heading.innerHTML = `<span class="sentence-number">${number}</span><span></span>`;
+        heading.lastElementChild.textContent = english;
+
+        const answers = document.createElement("div");
+        answers.className = "answers";
+        answers.setAttribute("role", "radiogroup");
+        answers.setAttribute("aria-label", `Chọn nghĩa cho câu ${index + 1}`);
+
+        const choices = [1, 2, 3].map(offset => ({
+          text: sentences[(index + offset) % sentences.length][1],
+          correct: false
+        }));
+        choices.splice((index * 3 + 1) % 4, 0, { text: vietnamese, correct: true });
+
+        choices.forEach(({ text, correct }, choiceIndex) => {
+          const label = document.createElement("label");
+          label.className = "answer";
+
+          const input = document.createElement("input");
+          input.type = "radio";
+          input.name = `question-${index}`;
+          input.value = correct ? "correct" : "incorrect";
+          input.setAttribute("aria-label", `${String.fromCharCode(65 + choiceIndex)}. ${text}`);
+
+          const letter = document.createElement("span");
+          letter.className = "answer-letter";
+          letter.textContent = String.fromCharCode(65 + choiceIndex);
+
+          const answerText = document.createElement("span");
+          answerText.textContent = text;
+
+          input.addEventListener("change", () => {
+            answered.add(index);
+            label.parentElement.querySelectorAll(".answer").forEach(option => {
+              option.classList.toggle("is-selected", option.querySelector("input").checked);
+            });
+
+            const progress = answered.size;
+            count.textContent = progress;
+            fill.style.width = `${(progress / sentences.length) * 100}%`;
+            progressBar.setAttribute("aria-valuenow", progress);
+          });
+
+          label.append(input, letter, answerText);
+          answers.append(label);
+        });
+
+        card.append(heading, answers);
+        list.append(card);
+      });
+
+      const drillList = document.querySelector("#drill-list");
+      const drillCount = document.querySelector("#drill-progress-count");
+      const drillFill = document.querySelector("#drill-progress-fill");
+      const drillProgressBar = document.querySelector("#drills-title")
+        .closest(".lesson-section")
+        .querySelector(".progress-track");
+      const completedDrills = new Set();
+      const drillStates = [];
+
+      function shuffleWords(words, seed) {
+        const shuffled = words.map((word, index) => ({ word, index }));
+        let state = seed;
+
+        for (let index = shuffled.length - 1; index > 0; index -= 1) {
+          state = (state * 16807) % 2147483647;
+          const swapIndex = state % (index + 1);
+          [shuffled[index], shuffled[swapIndex]] = [shuffled[swapIndex], shuffled[index]];
+        }
+
+        return shuffled;
+      }
+
+      function updateDrillProgress() {
+        const progress = completedDrills.size;
+        drillCount.textContent = progress;
+        drillFill.style.width = `${(progress / drills.length) * 100}%`;
+        drillProgressBar.setAttribute("aria-valuenow", progress);
+      }
+
+      function placeWord(state, wordIndex) {
+        if (state.completed || state.placed.includes(wordIndex)) return;
+        state.placed.push(wordIndex);
+        renderDrillWords(state);
+      }
+
+      function returnWord(state, wordIndex) {
+        if (state.completed) return;
+        state.placed = state.placed.filter(index => index !== wordIndex);
+        state.feedback.textContent = "";
+        state.card.classList.remove("is-correct");
+        renderDrillWords(state);
+      }
+
+      function renderDrillWords(state) {
+        state.bank.replaceChildren();
+        state.answerZone.replaceChildren();
+
+        state.words.forEach(({ word, index }) => {
+          const tile = document.createElement("button");
+          tile.type = "button";
+          tile.className = "word-tile";
+          tile.textContent = word;
+          tile.draggable = !state.completed && !state.placed.includes(index);
+          tile.disabled = state.completed || state.placed.includes(index);
+          tile.setAttribute("aria-label", tile.disabled ? `${word}, đã chọn` : `${word}, nhấp hoặc kéo vào câu`);
+          tile.addEventListener("click", () => placeWord(state, index));
+          tile.addEventListener("dragstart", event => {
+            event.dataTransfer.setData("text/plain", String(index));
+            event.dataTransfer.effectAllowed = "move";
+          });
+          state.bank.append(tile);
+        });
+
+        state.placed.forEach(index => {
+          const placed = document.createElement("button");
+          placed.type = "button";
+          placed.className = "placed-word";
+          placed.textContent = state.words.find(word => word.index === index).word;
+          placed.disabled = state.completed;
+          placed.setAttribute("aria-label", `${placed.textContent}, nhấp để đưa từ trở lại`);
+          placed.addEventListener("click", () => returnWord(state, index));
+          state.answerZone.append(placed);
+        });
+
+        state.checkButton.disabled = state.completed || state.placed.length !== state.words.length;
+      }
+
+      drills.forEach((drill, drillIndex) => {
+        const card = document.createElement("article");
+        card.className = "drill-card";
+        card.dataset.drillIndex = String(drillIndex);
+
+        const number = document.createElement("div");
+        number.className = "drill-number";
+        number.textContent = String(drillIndex + 1).padStart(2, "0");
+
+        const bank = document.createElement("div");
+        bank.className = "word-bank";
+        bank.setAttribute("aria-label", `Từ để sắp xếp câu ${drillIndex + 1}`);
+
+        const answerZone = document.createElement("div");
+        answerZone.className = "answer-zone";
+        answerZone.setAttribute("role", "group");
+        answerZone.setAttribute("aria-label", `Câu trả lời ${drillIndex + 1}`);
+        answerZone.tabIndex = 0;
+        answerZone.addEventListener("dragover", event => {
+          event.preventDefault();
+          answerZone.classList.add("is-drop-target");
+        });
+        answerZone.addEventListener("dragleave", event => {
+          if (!answerZone.contains(event.relatedTarget)) answerZone.classList.remove("is-drop-target");
+        });
+
+        const translation = document.createElement("p");
+        translation.className = "drill-translation";
+        translation.textContent = drill.translation;
+
+        const substitutions = document.createElement("div");
+        substitutions.className = "substitutions";
+        const substitutionsTitle = document.createElement("span");
+        substitutionsTitle.className = "substitutions-title";
+        substitutionsTitle.textContent = "Từ thay thế:";
+        substitutions.append(substitutionsTitle);
+
+        drill.substitutions.forEach(([english, vietnamese]) => {
+          const item = document.createElement("span");
+          item.className = "substitution";
+          const englishText = document.createElement("strong");
+          englishText.textContent = english;
+          const vietnameseText = document.createElement("span");
+          vietnameseText.textContent = `(${vietnamese})`;
+          item.append(englishText, vietnameseText);
+          substitutions.append(item);
+        });
+
+        const feedback = document.createElement("p");
+        feedback.className = "drill-feedback";
+        feedback.setAttribute("aria-live", "polite");
+
+        const checkButton = document.createElement("button");
+        checkButton.type = "button";
+        checkButton.className = "check-drill";
+        checkButton.textContent = "Kiểm tra câu";
+
+        const actions = document.createElement("div");
+        actions.className = "drill-actions";
+        actions.append(checkButton, feedback);
+
+        const state = {
+          expected: drill.sentence.match(/\S+/g),
+          words: shuffleWords(drill.sentence.match(/\S+/g), (drillIndex + 1) * 104729),
+          placed: [],
+          bank,
+          answerZone,
+          card,
+          checkButton,
+          feedback,
+          completed: false
+        };
+        drillStates.push(state);
+
+        answerZone.addEventListener("drop", event => {
+          event.preventDefault();
+          answerZone.classList.remove("is-drop-target");
+          const wordIndex = Number(event.dataTransfer.getData("text/plain"));
+          if (Number.isInteger(wordIndex) && state.words.some(word => word.index === wordIndex)) {
+            placeWord(state, wordIndex);
+          }
+        });
+
+        checkButton.addEventListener("click", () => {
+          const isCorrect = state.placed.every((wordIndex, position) =>
+            state.words.find(word => word.index === wordIndex).word === state.expected[position]
+          );
+          if (!isCorrect) {
+            feedback.textContent = "Chưa đúng thứ tự. Hãy nhấp vào từ trong khung để sắp xếp lại.";
+            return;
+          }
+
+          state.completed = true;
+          card.classList.add("is-correct");
+          feedback.textContent = "Chính xác!";
+          completedDrills.add(drillIndex);
+          renderDrillWords(state);
+          updateDrillProgress();
+        });
+
+        card.append(number, bank, answerZone, translation, substitutions);
+        if (drill.note) {
+          const note = document.createElement("p");
+          note.className = "drill-note";
+          note.textContent = drill.note;
+          card.append(note);
+        }
+        card.append(actions);
+        drillList.append(card);
+        renderDrillWords(state);
+      });
+
+      document.querySelector("#reset-drills").addEventListener("click", () => {
+        drillStates.forEach(state => {
+          state.placed = [];
+          state.completed = false;
+          state.card.classList.remove("is-correct");
+          state.feedback.textContent = "";
+          renderDrillWords(state);
+        });
+        completedDrills.clear();
+        updateDrillProgress();
+      });
+    </script>
+  </body>
+</html>
